@@ -21,7 +21,7 @@
      super();
      this.state = {
        pics: [],
-       loading: true //initialize a loading state
+       loading: true //initialize a loading state to display a lading message
      };
    }
  
@@ -39,7 +39,8 @@
        )
        .then(response => {
          this.setState({
-           pics: response.data.photos.photo
+           pics: response.data.photos.photo,
+           loading: false
          });
        })
        .catch(error => {
@@ -57,8 +58,13 @@
            <Header onSearch={this.performSearch} />
 
              <div className="photo-container">
+             {
+               (this.state.loading)
+               ? <h1>Searching Database...</h1> //if the loading state is true,I'll render a h1
+               :  <Gallery data={this.state.pics} /> //otherwise if loading is false, render Gallery component
+             }
              <h2>Results</h2>
-            <Gallery data={this.state.pics} />
+           
             </div>          
            {/*pass data array to Gallery component */}
          </div>

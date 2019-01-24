@@ -16,7 +16,7 @@ const Gallery = (props) => {
   If return.length is greater than 0, pics will equal the map function */
   if (results.length > 0) {
     pics = results.map(pic => <Galleryitem url={`https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}.jpg`} key={pic.id} title={pic.title} />);
-} else {
+} else { //if no results are returned, then pics will be equal to the NoPics component
     pics = <NoPics />
   }
 

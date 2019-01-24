@@ -16,9 +16,9 @@ onSearchChange = e => { //this function updates the state based on user input
   this.setState({ searchText: e.target.value });
 }
 
-handleSubmit = e => { //this form will be called when the form is submitted
+handleSubmit = e => { //this will be called when the form is submitted
   e.preventDefault();
-  this.props.onSearch(this.state.searchText);
+  this.props.onSearch(this.query.value); //to access the input field's value we pass this.query.value to onSearch
   e.currentTarget.reset(); //this resets input field
 }
 
@@ -26,7 +26,7 @@ handleSubmit = e => { //this form will be called when the form is submitted
     return ( //JSX inside ()
     <form 
     className="search-form" onSubmit={this.handleSubmit} >
-        <input type="search" name="search" placeholder="Search" required onChange={this.onSearchChange} ref={(input) => this.value = input} //ref puts a reference to input on the
+        <input type="search" name="search" placeholder="Search" required onChange={this.onSearchChange} ref={(input) => this.query = input} //ref puts a reference to input on the search form class
  />
         <button type="submit" className="search-button">
           <svg fill="#fff" height="24" viewBox="0 0 23 23" width="24" xmlns="http://www.w3.org/2000/svg">

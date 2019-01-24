@@ -17,8 +17,8 @@ const Header = props => {
   return (
     //JSX inside ()
     <header>
-      <Form /> {/*render the search bar*/}
-      <Nav onSearch={props.onSearch} /> {/*Render Nav menu */}
+      <Form onSearch={props.onSearch}/> {/*render the search bar*/}
+      <Nav  /> {/*Render Nav menu */}
       <Galleryitem /> {/*Render Gallery component  */}
     </header>
   );

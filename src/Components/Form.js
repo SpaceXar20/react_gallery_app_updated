@@ -18,7 +18,7 @@ onSearchChange = e => { //this function updates the state based on user input
 
 handleSubmit = e => { //this form will be called when the form is submitted
   e.preventDefault();
-  this.props.onSearch(this.text.value);
+  this.props.onSearch(this.state.searchText);
   e.currentTarget.reset(); //this resets input field
 }
 

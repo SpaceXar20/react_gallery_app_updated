@@ -30,12 +30,12 @@
    }
  
    //this function will create the search feature
-   performSearch = (text = "sunset") => {
-     //include text parameter from flickr api on url, and provide a default value for text parameter to display sunset pics when the page first loads
+   performSearch = (query = "sunset") => {
+     //include a query parameter so that flickr can return images based on user input, and provide a default value for query parameter to display sunset pics when the page first loads
      //fetch data from flickr
      axios
        .get(
-         `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${text}&per_page=24&format=json&nojsoncallback=1`
+         `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
        )
        .then(response => {
          this.setState({

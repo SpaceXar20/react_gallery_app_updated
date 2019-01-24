@@ -8,7 +8,7 @@ import React from "react";
 const Galleryitem = props => (
   <ul>
     <li>
-      <img src={props.url} alt="" />{" "}
+      <img src={props.url} alt="" />
       {/*set img src to props.url to render images*/}
     </li>
   </ul>

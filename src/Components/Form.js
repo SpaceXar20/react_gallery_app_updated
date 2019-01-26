@@ -25,7 +25,7 @@ handleSubmit = e => { //this will be called when the form is submitted
   render() {
     return ( //JSX inside ()
     <form 
-    className="search-form" onSubmit={this.handleSubmit} >
+    className="search-form" onSubmit={this.handleSubmit} > {/*pass the handleSubmit function to the form as a prop */}
         <input type="search" name="search" placeholder="Search" required onChange={this.onSearchChange} ref={(input) => this.query = input} //ref puts a reference to input on the search form class
  />
         <button type="submit" className="search-button">

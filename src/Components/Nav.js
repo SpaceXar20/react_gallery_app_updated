@@ -1,19 +1,19 @@
 /* import React*/
 import React from 'react';
-import { Link } from 'react-router-dom'; //import link to create nav links
+import { NavLink } from 'react-router-dom'; //import Navlink to create nav links and to put active class on any link that is active
+
 
 /*Create a Nav for navigation menu to be stored in Header*/
-const Nav = () => {
+const Nav = (props) => { console.log(props) //Nav contains a function passed from App
     return ( //JSX inside ()
-    <nav className="main-nav">
+    <nav className="main-nav"> 
     <ul> 
-      <li><Link to=''>Cats</Link></li> {/*value in to needs to match the path defined in Route Path */}
-      <li><Link to='#'>Dogs</Link></li>
-      <li><Link to='#'>Computers</Link></li>
+      <li><NavLink to='/cats'>CATS</NavLink></li> {/*value in to needs to match the path defined in Route Path */}
+      <li><NavLink to='/dogs'>DOGS</NavLink></li>
+      <li><NavLink to='/computer'>COMPUTER</NavLink></li>
     </ul>
   </nav>
-
-    )
+  )
 }
 
 

@@ -9,7 +9,7 @@ import NoPics from './NoPics'
 https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg*/
 
 const Gallery = (props) => {
-  const results = props.data;  console.log(results) //this shows that the data was passed over from App component
+   const results = props.data;  //console.log(results)  shows that the data was passed over from App component
   let pics;
   
   /*I received help on this section from myles young 
@@ -23,7 +23,7 @@ const Gallery = (props) => {
   return (
      <ul>
        {pics}
-      </ul>
+     </ul>
   );
 };
 

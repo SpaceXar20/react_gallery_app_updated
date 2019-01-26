@@ -6,12 +6,11 @@ import React from "react";
  sunsets, waterfalls and rainbows, for example.*/
 
 const Galleryitem = props => (
-  <ul>
+  
     <li>
-      <img src={props.url} alt="" />
-      {/*set img src to props.url to render images*/}
+      <img src={props.url} alt="" /> {/*set the img src to the props url passed in from the Gallery component */}
     </li>
-  </ul>
+  
 );
 
 export default Galleryitem;

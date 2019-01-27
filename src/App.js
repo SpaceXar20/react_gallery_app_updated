@@ -95,7 +95,7 @@
              </Switch > 
              {
                (this.state.loading)
-               ? <h1>Retrieving Photos Please Wait...</h1> //if the loading state is true,I'll render a h1
+               ? <h1>Loading Photos...</h1> //if the loading state is true,I'll render a h1
                :  <Gallery data={this.state.pics} /> //otherwise if loading is false, render Gallery component, also pass a data props containing this.state.pics to Gallery component
              }
             

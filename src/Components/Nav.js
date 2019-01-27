@@ -10,7 +10,7 @@ const Nav = (props) => { console.log(props) //Nav contains a function passed fro
     <ul> 
       <li><NavLink to='/cats'>CATS</NavLink></li> {/*value in to needs to match the path defined in Route Path */}
       <li><NavLink to='/dogs'>DOGS</NavLink></li>
-      <li><NavLink to='/computer'>COMPUTER</NavLink></li>
+      <li><NavLink to='/computer'>COMPUTERS</NavLink></li>
     </ul>
   </nav>
   )

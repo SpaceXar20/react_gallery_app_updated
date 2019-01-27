@@ -26,6 +26,7 @@
      super();
      this.state = {
        pics: [], //this array will hold the pictures that will render as soon as the page loads
+       //cats: [],
        loading: true
      };
    }
@@ -36,7 +37,7 @@
    }
  
    //this function will create the search feature
-   performSearch = (query = "") => {
+   performSearch = (query = "sunset") => {
      //include a query parameter so that flickr can return images based on user input, and provide a default value for query parameter to display sunset pics when the page first loads
      //fetch data from flickr
      axios 
@@ -63,10 +64,10 @@
       .get(
         ` https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=cats&per_page=24&format=json&nojsoncallback=1`
       )
-      .then(response => { //set the response so that pics will be equal to the data array containing photos from flickr
+      .then(response => { //set the response so that pics will be equal to the data array containing cat photos from flickr
         console.log(response)
         this.setState({
-          pics: response.data.photos.photo, 
+          cats: response.data.photos.photo, 
           loading: false //initialize a loading state to display a loading message
         });
       })

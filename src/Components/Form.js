@@ -14,6 +14,7 @@ state = {
 
 onSearchChange = e => { //this function updates the state based on user input
   this.setState({ searchText: e.target.value });
+  
 }
 
 handleSubmit = e => { //this will be called when the form is submitted

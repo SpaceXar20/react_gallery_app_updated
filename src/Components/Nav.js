@@ -8,9 +8,10 @@ const Nav = (props) => { //console.log(props) Nav contains a function passed fro
     return ( //JSX inside ()
     <nav className="main-nav"> 
     <ul> 
-      <li><NavLink to='/cats'>CATS</NavLink></li> {/*value in to needs to match the path defined in Route Path */}
-      <li><NavLink to='/dogs'>DOGS</NavLink></li>
-      <li><NavLink to='/computer'>COMPUTERS</NavLink></li>
+    <li><NavLink exact to='/'>HOME</NavLink></li>
+      <li><NavLink exact to='/cats'>CATS</NavLink></li> {/*value in to needs to match the path defined in Route Path */}
+      <li><NavLink exact to='/dogs'>DOGS</NavLink></li>
+      <li><NavLink exact to='/computer'>COMPUTERS</NavLink></li>
     </ul>
   </nav>
   )

@@ -8,7 +8,7 @@ import NoPics from './NoPics'
 /*format to create url for flickr:
 https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg*/
 
-const Gallery = (props) => { console.log(props)
+const Gallery = (props) => { 
    const results = props.data;  //console.log(results)  shows that the data was passed over from App component
   let pics;
   

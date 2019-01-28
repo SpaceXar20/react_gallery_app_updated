@@ -19,25 +19,30 @@
  import Dogs from "./Components/Dogs";
  import Computer from "./Components/Computer";
  import NotFound from "./Components/NotFound";
+ import Home from "./Components/Home"; //the reason I built a home component was so that I could avoid getting an error on the <Switch>, I needed  component to exactly match the / url 
 
  class App extends Component { //Class components need to extend  React.Component, and class components require the render()
    constructor() {
      //state for data we want to display from flickr
      super();
      this.state = {
-       pics: [], //this array will hold the pictures that will render as soon as the page loads
+       pics: [], //this array will hold the pictures of pics,dogs,computers,cats that will render as soon as the page loads
        cats: [],
+       dogs: [],
+       computers: [],
        loading: true
      };
    }
  
    componentDidMount() {
-     this.performSearch(); //call performSearch function on the componentDidMount() life cycle
-     this.renderCats()
+     this.performSearch(); //call performSearch(), .renderCats(), renderDogs(), renderComputers()  on the componentDidMount() life cycle
+     this.renderCats();
+     this.renderDogs();
+     this.renderComputers();
    }
  
    //this function will create the search feature
-   performSearch = (query = "sunset") => {
+   performSearch = (query = "random") => {
      //include a query parameter so that flickr can return images based on user input, and provide a default value for query parameter to display sunset pics when the page first loads
      //fetch data from flickr
      axios 
@@ -75,6 +80,46 @@
         console.log("Something went wrong, could not access data", error);
       });
   }; 
+
+  //this function will retrieve the DOGS pictures
+
+  renderDogs = () => {
+    //fetch data from flickr
+    axios 
+      .get(
+        ` https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=dogs&per_page=24&format=json&nojsoncallback=1`
+      )
+      .then(response => { //set the response so that pics will be equal to the data array containing dog photos from flickr
+        console.log(response)
+        this.setState({
+          dogs: response.data.photos.photo, 
+          loading: false //initialize a loading state to display a loading message
+        });
+      })
+      .catch(error => { //this catch method outputs a message to the console, should axios fail to retrieve data
+        console.log("Something went wrong, could not access data", error);
+      });
+  }; 
+
+  //this function will retrieve the Computer pictures
+
+  renderComputers = () => {
+    //fetch data from flickr
+    axios 
+      .get(
+        ` https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=laptops&per_page=24&format=json&nojsoncallback=1`
+      )
+      .then(response => { //set the response so that pics will be equal to the data array containing computer photos from flickr
+        console.log(response)
+        this.setState({
+          computers: response.data.photos.photo, 
+          loading: false //initialize a loading state to display a loading message
+        });
+      })
+      .catch(error => { //this catch method outputs a message to the console, should axios fail to retrieve data
+        console.log("Something went wrong, could not access data", error);
+      });
+  }; 
  
    render() { // I used a code snippet from Josue https://stackoverflow.com/a/54319021/10043628
     //  console.log(this.state.pics);
@@ -88,9 +133,10 @@
              <h2>Results</h2>
              <Switch> 
              {/* <Route path="/" component={App} /> */}
-             <Route path="/cats" render={ () => <Cats data={this.state.cats} /> } /> {/*use Route component to render Cats,Dogs and Computer components when the url matches  */}
-             <Route path="/dogs" component={Dogs} />
-             <Route path="/computer" component={Computer} />
+             <Route exact path="/" Component={Home} /> } /> {/*Having a Home( / ) path avoids the NotFound component from rendering */}
+             <Route path="/cats" render={ () => <Cats data={this.state.cats} /> } />  {/*use Route path and render to display Cats,Dogs and Computer components when the url matches  */}
+             <Route path="/dogs" render={ () => <Dogs data={this.state.dogs} /> } /> 
+             <Route path="/computer" render={ () => <Computer data={this.state.computers} /> } /> 
              <Route component={NotFound}/> {/*render NotFound component */}
              </Switch > 
              {

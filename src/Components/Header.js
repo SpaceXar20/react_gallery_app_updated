@@ -13,7 +13,7 @@ like an app title, logo, nav and search bar.
 
 // Accept component properties as first parameter 
 const Header = props => {   //Header contains onSearch={this.performSearch} as props from App, this prop containing the function will be passed to Form
-console.log(props)
+// console.log(props)
   return (
     //JSX inside ()
     <header>

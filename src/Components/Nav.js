@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'; //import Navlink to create nav links
 
 
 /*Create a Nav for navigation menu to be stored in Header*/
-const Nav = (props) => { console.log(props) //Nav contains a function passed from App
+const Nav = (props) => { //console.log(props) Nav contains a function passed from App
     return ( //JSX inside ()
     <nav className="main-nav"> 
     <ul> 

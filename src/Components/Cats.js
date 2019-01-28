@@ -1,10 +1,11 @@
 import React from "react";
 
-const Cats = () => (
-  <div>
-    <h2>I want to render cat images as soon as a user click the cats button</h2> {/*pass string as prop from app line 29*/}
-    <p>Is it true that cats have 9 lives?</p>
-  </div>
-);
+const Cats = (props) => (  
+  
+  <li> {console.log(props)}
+  <img src={props.url} alt="" /> {/*set the img src to the props url passed in from the Gallery component */}
+</li>
+
+); 
 
 export default Cats;

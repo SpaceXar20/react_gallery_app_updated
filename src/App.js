@@ -15,18 +15,18 @@
  //import components
  import Header from "./Components/Header"; //after exporting Header ,import Header component into this file
  import Gallery from "./Components/Gallery";
- import Cats from "./Components/Cats"
- import Dogs from "./Components/Dogs"
- import Computer from "./Components/Computer"
- import NotFound from "./Components/NotFound"
+ import Cats from "./Components/Cats";
+ import Dogs from "./Components/Dogs";
+ import Computer from "./Components/Computer";
+ import NotFound from "./Components/NotFound";
 
- class App extends Component {
+ class App extends Component { //Class components need to extend  React.Component, and class components require the render()
    constructor() {
      //state for data we want to display from flickr
      super();
      this.state = {
        pics: [], //this array will hold the pictures that will render as soon as the page loads
-       //cats: [],
+       cats: [],
        loading: true
      };
    }
@@ -77,7 +77,7 @@
   }; 
  
    render() { // I used a code snippet from Josue https://stackoverflow.com/a/54319021/10043628
-     //console.log(this.state.pics);
+    //  console.log(this.state.pics);
      return (
        //JSX inside ()
        <BrowserRouter>
@@ -88,7 +88,7 @@
              <h2>Results</h2>
              <Switch> 
              {/* <Route path="/" component={App} /> */}
-             <Route path="/cats" component={Cats} /> {/*use Route component to render Cats,Dogs and Computer components when the url matches  */}
+             <Route path="/cats" render={ () => <Cats data={this.state.cats} /> } /> {/*use Route component to render Cats,Dogs and Computer components when the url matches  */}
              <Route path="/dogs" component={Dogs} />
              <Route path="/computer" component={Computer} />
              <Route component={NotFound}/> {/*render NotFound component */}

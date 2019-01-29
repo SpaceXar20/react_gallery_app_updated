@@ -136,8 +136,7 @@
              <Route exact path="/cats" render={ () => <Gallery data={this.state.cats} /> } />  {/*use Route path and render to display Cats,Dogs and Computer components when the url matches  */}
              <Route exact path="/dogs" render={ () => <Gallery data={this.state.dogs} /> } /> 
              <Route exact path="/computer" render={ () => <Gallery data={this.state.computers} /> } /> 
-             <Route exact path="/search" render={ () => <Search data={this.state.pics} /> } /> 
-             <Route exact path="/search" component={ () => <Search onSearch={this.performSearch} /> } /> 
+             <Route exact path="/search" render={() => ( <Search onSearch={this.performSearch} data={this.state.pics} /> )} /> {/*I used a code snippet from Harish Soni https://stackoverflow.com/a/54415172/10043628 */}
              <Route exact component={NotFound}/> {/*render NotFound component */}
              </Switch > 
              {

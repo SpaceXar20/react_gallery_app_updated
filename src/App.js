@@ -15,11 +15,10 @@
  //import components
  import Header from "./Components/Header"; //after exporting Header ,import Header component into this file
  import Gallery from "./Components/Gallery";
- import Cats from "./Components/Cats";
- import Dogs from "./Components/Dogs";
- import Computer from "./Components/Computer";
  import NotFound from "./Components/NotFound";
  import Home from "./Components/Home"; //the reason I built a home component was so that I could avoid getting an error on the <Switch>, I needed  component to exactly match the / url 
+ import Search from "./Components/Search";
+
  
  class App extends Component { //Class components need to extend  React.Component, and class components require the render()
    constructor() {
@@ -128,15 +127,17 @@
        <BrowserRouter>
          <div>
            {/* Pass the performSearch function as a prop down to Header  so that I can pass it to Form component located inside Header to enable searches*/}
-           <Header onSearch={this.performSearch} cats={this.renderCats}/> {/* I passed the renderCats function to Header so that I could pass it to Nav */}
+           <Header onSearch={this.performSearch} /> 
             <div className="photo-container">
              <h2>Results</h2>
              <Switch> 
              {/* <Route path="/" component={App} /> */}
-             <Route exact path="/" Component={Home} /> } /> {/*Having a Home( / ) path avoids the NotFound component from rendering */}
-             <Route exact path="/cats" render={ () => <Cats data={this.state.cats} /> } />  {/*use Route path and render to display Cats,Dogs and Computer components when the url matches  */}
-             <Route exact path="/dogs" render={ () => <Dogs data={this.state.dogs} /> } /> 
-             <Route exact path="/computer" render={ () => <Computer data={this.state.computers} /> } /> 
+             <Route exact path="/" Component={Home} /> } /> {/*Having a Home( / ) path avoids the NotFound component from rendering*/}
+             <Route exact path="/cats" render={ () => <Gallery data={this.state.cats} /> } />  {/*use Route path and render to display Cats,Dogs and Computer components when the url matches  */}
+             <Route exact path="/dogs" render={ () => <Gallery data={this.state.dogs} /> } /> 
+             <Route exact path="/computer" render={ () => <Gallery data={this.state.computers} /> } /> 
+             <Route exact path="/search" render={ () => <Search data={this.state.pics} /> } /> 
+             <Route exact path="/search" component={ () => <Search onSearch={this.performSearch} /> } /> 
              <Route exact component={NotFound}/> {/*render NotFound component */}
              </Switch > 
              {

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'; //import Navlink to create nav links
 
 
 /*Create a Nav for navigation menu to be stored in Header*/
-const Nav = (props) => { //console.log(props) Nav contains a function passed from App
+const Nav = () => { //console.log(props) Nav contains a function passed from App
     return ( //JSX inside ()
     <nav className="main-nav"> 
     <ul> 
@@ -12,6 +12,7 @@ const Nav = (props) => { //console.log(props) Nav contains a function passed fro
       <li><NavLink exact to='/cats'>CATS</NavLink></li> {/*value in to needs to match the path defined in Route Path */}
       <li><NavLink exact to='/dogs'>DOGS</NavLink></li>
       <li><NavLink exact to='/computer'>COMPUTERS</NavLink></li>
+      <li><NavLink exact to='/search'>SEARCH</NavLink></li>
     </ul>
   </nav>
   )

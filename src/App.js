@@ -73,7 +73,7 @@ import Form from "./Components/Form";
         console.log(response)
         this.setState({
           cats: response.data.photos.photo, 
-          loading: false //initialize a loading state to display a loading message
+          loading: true //initialize a loading state to display a loading message
         });
       })
       .catch(error => { //this catch method outputs a message to the console, should axios fail to retrieve data
@@ -122,18 +122,19 @@ import Form from "./Components/Form";
   }; 
  
    render() { // I used a code snippet from Josue https://stackoverflow.com/a/54319021/10043628
-    //  console.log(this.state.pics);
+   
      return (//JSX inside ()
        <BrowserRouter>
           <div>
             <div>
+            <Route exact path="/search" render={ () => <Search onSearch={this.performSearch} /> } />
             <Header onSearch={this.performSearch} /> 
                 {/*Render the search input to all urls and give each url their respective function that fetches data for each topic */}
                 {/* <Route exact path="/" render={ () => <Search onSearch={this.performSearch} /> } />
                 <Route exact path="/cats" render={ () => <Search onSearch={this.renderCats} /> } />
                 <Route exact path="/dogs" render={ () => <Search onSearch={this.renderDogs} /> } />
                 <Route exact path="/computer" render={ () => <Search onSearch={this.renderComputers} /> } /> */}
-                <Route exact path="/search" render={ () => <Search onSearch={this.performSearch} /> } />
+                
                 
             </div>
               <div className="photo-container"> {/*this div will hold the images */}
@@ -143,17 +144,13 @@ import Form from "./Components/Form";
                <Switch>
                  {/*I will render the gallery component and in the process pass in the data array as props for each topic*/}
                  <Route exact path="/" render={ () => <Gallery data={this.state.pics } /> } />
-                 <Route exact path="/cats" render={ () => <Gallery data={this.state.cats } /> } /> }
-                 <Route exact path="/dogs" render={ () => <Gallery data={this.state.dogs } /> } /> }
-                 <Route exact path="/computer" render={ () => <Gallery data={this.state.computers } /> } /> }
-                 <Route exact path="/search" render={ () => <Gallery data={this.state.pics } /> } />
+                 <Route  path="/cats" render={ () => <Gallery data={this.state.cats } /> } /> }
+                 <Route  path="/dogs" render={ () => <Gallery data={this.state.dogs } /> } /> }
+                 <Route  path="/computer" render={ () => <Gallery data={this.state.computers } /> } /> }
+                 <Route  path="/search" render={ () => <Gallery data={this.state.pics } /> } />
                  <Route exact component={NotFound}/> {/*render NotFound component */}
                </Switch>
-               {
-               (this.state.loading)
-               ? <h1>Loading Photos...</h1> //if the loading state is true,I'll render a h1
-               :  <Gallery data={this.state.pics} /> //otherwise if loading is false, render Gallery component, also pass a data props containing this.state.pics to Gallery component
-             }
+               
              </div>
 
               </div>

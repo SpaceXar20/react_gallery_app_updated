@@ -129,10 +129,10 @@ import Form from "./Components/Form";
             <div>
             <Header onSearch={this.performSearch} /> 
                 {/*Render the search input to all urls and give each url their respective function that fetches data for each topic */}
-                <Route exact path="/" render={ () => <Search onSearch={this.performSearch} /> } />
+                {/* <Route exact path="/" render={ () => <Search onSearch={this.performSearch} /> } />
                 <Route exact path="/cats" render={ () => <Search onSearch={this.renderCats} /> } />
                 <Route exact path="/dogs" render={ () => <Search onSearch={this.renderDogs} /> } />
-                <Route exact path="/computer" render={ () => <Search onSearch={this.renderComputers} /> } />
+                <Route exact path="/computer" render={ () => <Search onSearch={this.renderComputers} /> } /> */}
                 <Route exact path="/search" render={ () => <Search onSearch={this.performSearch} /> } />
                 
             </div>
@@ -144,7 +144,7 @@ import Form from "./Components/Form";
                  {/*I will render the gallery component and in the process pass in the data array as props for each topic*/}
                  <Route exact path="/" render={ () => <Gallery data={this.state.pics } /> } />
                  <Route exact path="/cats" render={ () => <Gallery data={this.state.cats } /> } /> }
-                 <Route exact path="/dogs" ender={ () => <Gallery data={this.state.dogs } /> } /> }
+                 <Route exact path="/dogs" render={ () => <Gallery data={this.state.dogs } /> } /> }
                  <Route exact path="/computer" render={ () => <Gallery data={this.state.computers } /> } /> }
                  <Route exact path="/search" render={ () => <Gallery data={this.state.pics } /> } />
                  <Route exact component={NotFound}/> {/*render NotFound component */}

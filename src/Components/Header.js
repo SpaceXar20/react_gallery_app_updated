@@ -17,7 +17,6 @@ const Header = props => {   //Header contains onSearch={this.performSearch} as p
   return (
     //JSX inside ()
     <header>
-      {/* <Form onSearch={props.onSearch}/> render the search bar, and pass the onSearch={this.performSearch} prop */}
       <Nav  /> 
     </header>
   );

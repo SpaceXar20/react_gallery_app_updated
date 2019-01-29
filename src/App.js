@@ -129,12 +129,7 @@ import Form from "./Components/Form";
             <div>
             <Route exact path="/search" render={ () => <Search onSearch={this.performSearch} /> } />
             <Header onSearch={this.performSearch} /> 
-                {/*Render the search input to all urls and give each url their respective function that fetches data for each topic */}
-                {/* <Route exact path="/" render={ () => <Search onSearch={this.performSearch} /> } />
-                <Route exact path="/cats" render={ () => <Search onSearch={this.renderCats} /> } />
-                <Route exact path="/dogs" render={ () => <Search onSearch={this.renderDogs} /> } />
-                <Route exact path="/computer" render={ () => <Search onSearch={this.renderComputers} /> } /> */}
-                
+               
                 
             </div>
               <div className="photo-container"> {/*this div will hold the images */}

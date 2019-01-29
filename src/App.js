@@ -18,6 +18,7 @@
  import NotFound from "./Components/NotFound";
  import Home from "./Components/Home"; //the reason I built a home component was so that I could avoid getting an error on the <Switch>, I needed  component to exactly match the / url 
  import Search from "./Components/Search";
+import Form from "./Components/Form";
 
  
  class App extends Component { //Class components need to extend  React.Component, and class components require the render()
@@ -122,32 +123,41 @@
  
    render() { // I used a code snippet from Josue https://stackoverflow.com/a/54319021/10043628
     //  console.log(this.state.pics);
-     return (
-       //JSX inside ()
+     return (//JSX inside ()
        <BrowserRouter>
-         <div>
-           {/* Pass the performSearch function as a prop down to Header  so that I can pass it to Form component located inside Header to enable searches*/}
-           <Header onSearch={this.performSearch} /> 
-            <div className="photo-container">
-             <h2>Results</h2>
-             <Switch> 
-             {/* <Route path="/" component={App} /> */}
-             <Route exact path="/" Component={Home} /> } /> {/*Having a Home( / ) path avoids the NotFound component from rendering*/}
-             <Route exact path="/cats" render={ () => <Gallery data={this.state.cats} /> } />  {/*use Route path and render to display Cats,Dogs and Computer components when the url matches  */}
-             <Route exact path="/dogs" render={ () => <Gallery data={this.state.dogs} /> } /> 
-             <Route exact path="/computer" render={ () => <Gallery data={this.state.computers} /> } /> 
-             <Route exact path="/search" render={() => ( <Search onSearch={this.performSearch} data={this.state.pics} /> )} /> {/*I used a code snippet from Harish Soni https://stackoverflow.com/a/54415172/10043628 */}
-             <Route exact component={NotFound}/> {/*render NotFound component */}
-             </Switch > 
-             {
+          <div>
+            <div>
+            <Header onSearch={this.performSearch} /> 
+                {/*Render the search input to all urls and give each url their respective function that fetches data for each topic */}
+                <Route exact path="/" render={ () => <Search onSearch={this.performSearch} /> } />
+                <Route exact path="/cats" render={ () => <Search onSearch={this.renderCats} /> } />
+                <Route exact path="/dogs" render={ () => <Search onSearch={this.renderDogs} /> } />
+                <Route exact path="/computer" render={ () => <Search onSearch={this.renderComputers} /> } />
+                <Route exact path="/search" render={ () => <Search onSearch={this.performSearch} /> } />
+                
+            </div>
+              <div className="photo-container"> {/*this div will hold the images */}
+                <h2>Results</h2>
+                
+             <div>
+               <Switch>
+                 {/*I will render the gallery component and in the process pass in the data array as props for each topic*/}
+                 <Route exact path="/" render={ () => <Gallery data={this.state.pics } /> } />
+                 <Route exact path="/cats" render={ () => <Gallery data={this.state.cats } /> } /> }
+                 <Route exact path="/dogs" ender={ () => <Gallery data={this.state.dogs } /> } /> }
+                 <Route exact path="/computer" render={ () => <Gallery data={this.state.computers } /> } /> }
+                 <Route exact path="/search" render={ () => <Gallery data={this.state.pics } /> } />
+                 <Route exact component={NotFound}/> {/*render NotFound component */}
+               </Switch>
+               {
                (this.state.loading)
                ? <h1>Loading Photos...</h1> //if the loading state is true,I'll render a h1
                :  <Gallery data={this.state.pics} /> //otherwise if loading is false, render Gallery component, also pass a data props containing this.state.pics to Gallery component
              }
-            
-           
-            </div>          
-         </div>
+             </div>
+
+              </div>
+          </div>
        </BrowserRouter>
      );
    }

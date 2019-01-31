@@ -1,3 +1,18 @@
+# react_gallery_app_updated
+
+This website uses React to render images from the Flickr API
+
+#STEPS TO START WEBSITE IN BROWSER
+
+-Create a file called config.js inside the src folder. Once you have created your file, copy and paste the code snippet below:
+
+const apiKey = 'Your API Key Goes Inside Here'; 
+export default apiKey;
+
+Make sure to type in your key inside the quotes
+
+-Finally start the app, type `npm install` on the terminal to install dependencies and then type `npm start` to start the project.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

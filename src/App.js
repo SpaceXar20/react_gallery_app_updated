@@ -16,9 +16,8 @@
  import Header from "./Components/Header"; //after exporting Header ,import Header component into this file
  import Gallery from "./Components/Gallery";
  import NotFound from "./Components/NotFound";
- import Home from "./Components/Home"; //the reason I built a home component was so that I could avoid getting an error on the <Switch>, I needed  component to exactly match the / url 
  import Search from "./Components/Search";
-import Form from "./Components/Form";
+
 
  
  class App extends Component { //Class components need to extend  React.Component, and class components require the render()
@@ -43,6 +42,7 @@ import Form from "./Components/Form";
  
    //this function will create the search feature
    performSearch = (query = "random") => {
+     
      //include a query parameter so that flickr can return images based on user input, and provide a default value for query parameter to display sunset pics when the page first loads
      //fetch data from flickr
      axios 
@@ -55,10 +55,13 @@ import Form from "./Components/Form";
            pics: response.data.photos.photo, 
            loading: false //initialize a loading state to display a loading message
          });
+         
        })
        .catch(error => { //this catch method outputs a message to the console, should axios fail to retrieve data
          console.log("Something went wrong, could not access data", error);
+         
        });
+       
    }; 
 
    //this function will retrieve the CATS pictures
@@ -73,7 +76,7 @@ import Form from "./Components/Form";
         console.log(response)
         this.setState({
           cats: response.data.photos.photo, 
-          loading: true //initialize a loading state to display a loading message
+          loading: false //initialize a loading state to display a loading message
         });
       })
       .catch(error => { //this catch method outputs a message to the console, should axios fail to retrieve data
@@ -145,7 +148,11 @@ import Form from "./Components/Form";
                  <Route  path="/search" render={ () => <Gallery data={this.state.pics } /> } />
                  <Route exact component={NotFound}/> {/*render NotFound component */}
                </Switch>
-               
+               {
+               (this.state.loading)
+               ? <h1>Loading Photos...</h1> //if the loading state is true,I'll render a h1
+               :  <p>...</p> //otherwise if loading is false render some dots
+             }
              </div>
 
               </div>
